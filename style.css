@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg,
+    #ffeef8 0%,
+    #e8d5f2 25%,
+    #d4e8ff 50%,
+    #fff0e0 75%,
+    #e8ffe0 100%);
+  font-family: "Gloria Hallelujah", "Caveat Brush", cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title */
+h1 {
+  color: #5c2d91;
+  margin-bottom: 20px;
+  font-size: 2.4rem;
+}
+
+/* ⭐ Sticker sheet container */
+.page {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+
+  gap: 45px;
+
+  width: 95%;
+  max-width: 1100px;
+  height: 80vh;
+
+  padding: 40px;
+
+  justify-items: center;
+  align-items: center;
+}
+
+/* Sticker base */
+.sticker {
+  cursor: pointer;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  filter: drop-shadow(4px 8px 12px rgba(0,0,0,0.25));
+}
+
+/* Images must always stay fully visible */
+.sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Hover */
+.sticker:hover {
+  transform: scale(1.08) rotate(0deg);
+  z-index: 20;
+  filter: drop-shadow(12px 20px 30px rgba(92,45,145,0.45));
+}
+
+/* ⭐ Realistic stagger placement */
+.s1 { width: 230px; transform: rotate(-10deg); }
+.s2 { width: 190px; transform: rotate(8deg); }
+.s3 { width: 210px; transform: rotate(-6deg); }
+.s4 { width: 240px; transform: rotate(9deg); }
+
+.s5 { width: 220px; transform: rotate(-12deg); }
+.s6 { width: 260px; transform: rotate(7deg); }
+.s7 { width: 200px; transform: rotate(-8deg); }
+.s8 { width: 180px; transform: rotate(6deg); }
+
+/* Popup */
+.message-popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(92,45,145,0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s ease;
+  z-index: 100;
+}
+
+.message-popup.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.message-bubble {
+  position: relative;
+  max-width: 320px;
+  padding: 22px 52px 22px 26px;
+  background: linear-gradient(135deg,#fff,#f8f0ff);
+  border-radius: 16px;
+  border: 2px solid rgba(139,92,184,0.4);
+  box-shadow: 0 15px 45px rgba(92,45,145,0.35);
+}
+
+.message-text {
+  font-size: 1.3rem;
+  color: #5c2d91;
+  word-wrap: break-word;
+}
+
+.message-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #8b5cb8;
+}
+
+.message-close:hover {
+  background: rgba(139,92,184,0.15);
+  border-radius: 50%;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .page {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 160px;
+    gap: 30px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+}
